@@ -23,7 +23,7 @@ export const Team = () => {
           />
         </div>
       </div>
-      <GetData func={speArray} link={"http://localhost:3001/api/spe_members"} />
+      <GetData func={speArray} link={`${import.meta.env.VITE_BACKEND_URL}`} />
     </>
   );
 };
