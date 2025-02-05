@@ -11,10 +11,6 @@ const port = 3001;
 
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("Server is running!");
-});
-
 app.get("/api/spe_members", async (req, res) => {
   try {
     const sheetId = process.env.SPE_SHEET_ID;
