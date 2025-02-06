@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 export default function GetData(props) {
   const [data, setData] = useState([]);
+  const [newData, setNewData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,27 +20,29 @@ export default function GetData(props) {
   useEffect(() => {
     if (data.length === 0) return;
 
-    // Process data
-    const headers = data[0].map((header) =>
-      header.replace(":", "").toLowerCase()
-    );
+    let objs = [];
 
-    const processedData = data.slice(1).map((row) => {
+    for (let i = 1; i < data.length; i++) {
       const obj = {};
-      headers.forEach((header, index) => {
-        obj[header] = row[index] || "";
-      });
+      for (let j = 0; j < data[0].length; j++) {
+        let header = data[0][j];
+        if (header.includes(":")) header = header.replace(":", "");
+        header = header.toLowerCase();
 
-      // Generate image path
-      const imgName = obj.name.replaceAll(" ", "-").toLowerCase();
-      obj.img = `/img/people/${imgName}.jpg`; // 🚨 Verify image exists here
+        obj[header] = data[i][j] || "";
+      }
 
-      return obj;
-    });
+      let img = obj.name.replaceAll(" ", "-");
+      obj.img = `/img/people/${img}.jpg`;
 
-    console.log("Processed Data:", processedData); // Debug
-    props.func(processedData); // ✅ Pass data DIRECTLY to parent
+      objs.push(obj);
+    }
+
+    console.log("Processed data:", objs); // Verify in console
+    setNewData(objs);
+    props.func(objs); // Pass the directly processed array
   }, [data]);
 
+  // Keep your original return null if not rendering anything
   return null;
 }
