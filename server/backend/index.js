@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 const port = 3001;
 
-app.use(cors());
+app.use(cors({ origin: "*" }));
 
 app.get("/api/spe_members", async (req, res) => {
   try {
