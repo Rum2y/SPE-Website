@@ -1,3 +1,6 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
+
 export default function GetData(props) {
   const [data, setData] = useState([]);
 
