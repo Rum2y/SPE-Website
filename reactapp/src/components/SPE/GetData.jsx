@@ -38,11 +38,10 @@ export default function GetData(props) {
       objs.push(obj);
     }
 
-    console.log("Processed data:", objs); // Verify in console
+    console.log("Processed data:", objs);
     setNewData(objs);
-    props.func(objs); // Pass the directly processed array
+    props.func(objs);
   }, [data]);
 
-  // Keep your original return null if not rendering anything
   return null;
 }

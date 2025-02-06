@@ -45,9 +45,8 @@ export default function Forms() {
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_FORM_API_URL}`,
-        data // or `data` if sending FormData
+        data
       );
-      // Success: Reset form and show success message
       e.target.reset();
       handleOpen();
       console.log("Success:", response.data);
