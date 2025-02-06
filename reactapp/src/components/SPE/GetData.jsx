@@ -1,10 +1,5 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-
 export default function GetData(props) {
   const [data, setData] = useState([]);
-  const [newData, setNewData] = useState([]);
-  let newArr = [];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,26 +14,29 @@ export default function GetData(props) {
   }, []);
 
   useEffect(() => {
-    if (data.length != 0) {
-      let objs = [];
-      for (let i = 1; i < data.length; i++) {
-        objs.push({});
-        for (let j = 0; j < data[0].length; j++) {
-          if (data[0][j].includes(":"))
-            data[0][j] = data[0][j].replace(":", "");
+    if (data.length === 0) return;
 
-          objs[i - 1][data[0][j].toLowerCase()] = data[i][j] || "";
-        }
-        newArr.push(objs[i - 1]);
-      }
+    // Process data
+    const headers = data[0].map((header) =>
+      header.replace(":", "").toLowerCase()
+    );
 
-      newArr.forEach((el) => {
-        let img = el.name.replaceAll(" ", "-");
-        el.img = `/img/people/${img}.jpg`;
+    const processedData = data.slice(1).map((row) => {
+      const obj = {};
+      headers.forEach((header, index) => {
+        obj[header] = row[index] || "";
       });
-      console.log(newArr);
-      setNewData(newArr);
-      props.func(newData);
-    }
+
+      // Generate image path
+      const imgName = obj.name.replaceAll(" ", "-").toLowerCase();
+      obj.img = `/img/people/${imgName}.jpg`; // 🚨 Verify image exists here
+
+      return obj;
+    });
+
+    console.log("Processed Data:", processedData); // Debug
+    props.func(processedData); // ✅ Pass data DIRECTLY to parent
   }, [data]);
+
+  return null;
 }
