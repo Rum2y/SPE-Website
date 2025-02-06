@@ -14,6 +14,7 @@ export default function SPENavbar() {
     { name: "About Us", link: "/AboutUs" },
     { name: "Contact Us", link: "/ContactUs" },
     { name: "Membership", link: "/Member" },
+    { name: "Awards & Certificates", link: "/Awards" },
   ];
 
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -31,7 +32,7 @@ export default function SPENavbar() {
         <div className="flex justify-center items-center w-full bg-[white]">
           <div className="flex lg:gap-12 lg:px-10 xs:w-full lg:w-fit">
             <Link to={"/"}>
-              <div className="xs:hidden lg:flex gap-5 justify-center items-center">
+              <div className="xs:hidden lg:flex lg:gap-5 justify-center items-center">
                 <img
                   className="w-[140px] h-[90px] py-3"
                   src="/img/spel.png"
@@ -122,7 +123,7 @@ export default function SPENavbar() {
               </div>
             </Box>
 
-            <div className="xs:hidden lg:flex lg:gap-7 xl:gap-12 w-full justify-center">
+            <div className="xs:hidden lg:flex lg:gap-5 md:gap-5 xl:gap-12 w-full justify-center">
               {navigations.map((nav, index) => {
                 return (
                   <div
@@ -135,7 +136,7 @@ export default function SPENavbar() {
                           color: "#0D4C94",
                           fontWeight: 500,
                           borderRadius: 0,
-                          fontSize: { md: "1rem", lg: "1.1rem" },
+                          fontSize: { md: ".9rem", lg: "1.1rem" },
                           borderBottom: "2px solid transparent",
                           "&:hover": {
                             borderBottom: "2px solid #0D4C94",

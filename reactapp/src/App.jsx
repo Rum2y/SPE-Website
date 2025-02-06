@@ -7,6 +7,7 @@ import Contact from "./components/SPE/ContactUs/Contact";
 import SPENavbar from "./components/SPE/HomePage/spenav";
 import Membership from "./components/SPE/Membership/Membership";
 import TeamMembers from "./components/SPE/TeamMembers/TeamMembers";
+import Awards from "./components/SPE/Awards/Awards";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { path: "/ContactUs", element: <Contact /> },
       { path: "/Member", element: <Membership /> },
       { path: "/TeamMembers", element: <TeamMembers /> },
+      { path: "/Awards", element: <Awards /> },
     ],
   },
 ]);
