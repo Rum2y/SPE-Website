@@ -16,6 +16,17 @@ export default function Footer() {
             </div>
           </div>
 
+          <div className="mb-12">
+            <h3 className="text-xl font-semibold mb-4">Our Sponsors</h3>
+            <div className="flex justify-center space-x-6">
+              <img
+                src="/img/sponsors.png"
+                alt="Institute for Oil Sands Innovation (IOSI) Logo"
+                className="lg:w-1/2 xs:w-[90%]"
+              />
+            </div>
+          </div>
+
           <p className="mb-12 xs:text-[.7rem] xs: font-medium lg:text-[1rem]">
             &copy;
             {` ${new Date().getFullYear()} University of Alberta - Petroleum Engineering
